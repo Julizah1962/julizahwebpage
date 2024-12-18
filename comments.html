@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Your Comments</title>
+    <link rel="stylesheet" href="comment.css">
+</head>
+<body>
+    <nav class="main">
+        <div class="icon">
+            <h2 class="logo">JULIZAH</h2>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="homepage.html">HOMEPAGE</a></li>
+                <li><a href="biodata.html">BIODATA</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="video.html">VIDEO</a></li>
+                <li><a href="comments.html">COMMENTS</a></li>
+            </ul>
+        </div>
+    </nav>
+	
+	<div class="content">
+    <h1>Leave Your Comment</h1> </div>
+
+    <div class="form-container">
+        <form id="commentForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="comment">Comment:</label><br>
+            <textarea id="comment" name="comment" required></textarea><br><br>
+
+            <button type="button" onclick="buttonClicked()">Submit</button>
+        </form>
+    </div>
+
+    <!-- Table to display comments -->
+    <div class="comments-table">
+        <table id="commentsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Submitted comments will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function buttonClicked() {
+            // Get the values from the form
+            const name = document.getElementById("name").value;
+            const comment = document.getElementById("comment").value;
+
+            // Create a new table row
+            const newRow = document.createElement("tr");
+
+            // Create new table data (td) for Name and Comment
+            const nameCell = document.createElement("td");
+            nameCell.textContent = name;
+
+            const commentCell = document.createElement("td");
+            commentCell.textContent = comment;
+
+            // Append cells to the new row
+            newRow.appendChild(nameCell);
+            newRow.appendChild(commentCell);
+
+            // Add the new row to the table
+            document.querySelector("#commentsTable tbody").appendChild(newRow);
+
+            // Clear the form fields
+            document.getElementById("commentForm").reset();
+        }
+    </script>
+</body>
+</html>
